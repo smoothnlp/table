@@ -17,14 +17,14 @@ export class Table {
   /**
    * Creates
    */
-  constructor() {
+  constructor(readOnly) {
     this._numberOfColumns = 0;
     this._numberOfRows = 0;
     this._element = this._createTableWrapper();
     this._table = this._element.querySelector('table');
     this._selectedCell = null;
-
-    this._attachEvents();
+    this.readOnly = readOnly;
+    if(!readOnly) this._attachEvents();
   }
 
   /**
@@ -198,7 +198,7 @@ export class Table {
    * @return {HTMLElement} - the area
    */
   _createContenteditableArea() {
-    return create('div', [ CSS.inputField ], { contenteditable: 'true' });
+    return create('div', [ CSS.inputField ], { contenteditable:!this.readOnly });
   }
 
   /**

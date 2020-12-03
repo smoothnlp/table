@@ -56,10 +56,11 @@ class Table {
    * @param {object} config - user config for Tool
    * @param {object} api - Editor.js API
    */
-  constructor({ data, config, api }) {
+  constructor({ data, config, api ,readOnly}) {
+    this.readOnly = readOnly;
     this.api = api;
 
-    this._tableConstructor = new TableConstructor(data, config, api);
+    this._tableConstructor = new TableConstructor(data, config, api,readOnly);
 
     this.actions = [
       {
@@ -87,6 +88,14 @@ class Table {
         icon: Icons.DeleteCol
       }
     ];
+  }
+  /**
+   * Notify core that read-only mode is supported
+   *
+   * @returns {boolean}
+   */
+  static get isReadOnlySupported() {
+    return true;
   }
 
   /**

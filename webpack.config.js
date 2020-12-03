@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/plugin.js',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../visual_lab/src/plugins/editorjs_table/'),
     library: 'Table',
     libraryTarget: 'umd'
   },
